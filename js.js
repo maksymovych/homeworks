@@ -70,13 +70,33 @@ const dayName = getNameOfDay(1, 'ru')
  или отрицательные числа.*/
 
 const summOfTwoSmolest = (arr) => {
+	if (arr.length < 4) {
+		console.log("Min length of an array mast be more then 4")
+		return
+	}
+
 	let sortArray = arr.sort((a, b) => a - b)
 
-	for (let i = 0; i < sortArray.length - 1; i++) {
-		if (sortArray[i] < 0 || sortArray[i] === sortArray[i + 1]) {
-			console.log("array annavailabel")
+	for (let i = 0; i < sortArray.length; i++) {
+		if (sortArray[i] < 0 || sortArray[i] % 1 !== 0
+			|| (sortArray[i] === sortArray[i + 1] && i < arr.length - 1)) {
+			console.log("Unavailable array")
 			return
 		}
 	}
 	return sortArray[0] + sortArray[1]
+}
+
+/*Task 5:
+Дан массив единиц и нулей, преобразуйте эквивалентное двоичное значение в целое число.
+Например: [0, 0, 0, 1]рассматривается как 0001двоичное представление 1.*/
+
+const toDecimal = (arr) => {
+	let number = 0
+	let counter = 1
+	for (let i = arr.length - 1; i >= 0; i--) {
+		arr[i] === 1 ? number += counter : number
+		counter *= 2
+	}
+	return number
 }
