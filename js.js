@@ -63,4 +63,22 @@ const getNameOfDay = (day, lang) => {
 
 const dayName = getNameOfDay(1, 'ru')
 
-console.log(dayName)
+//console.log(dayName)
+
+/*Task 4: Создайте функцию, которая возвращает сумму двух наименьших положительных чисел
+ из массива минимум 4 положительных целых чисел. Не передаются числа с плавающей запятой
+ или отрицательные числа.*/
+
+const summOfTwoSmolest = (arr) => {
+	let summ = null
+
+	for (let i = 0; i < 2; i++) {
+		let min = arr[i]
+		for (let i = 1; i < arr.length; i++) {
+			min < arr[i] ? min : min = arr[i] && arr.splice(arr[i], 1)
+
+		}
+		summ += min
+	}
+	return summ
+}
