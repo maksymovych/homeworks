@@ -34,10 +34,18 @@ const getArray = (amount) => {
 	const amountOfArr = amount / 3
 	let counter = 1
 	let resultArr = []
-	for (let i = 0; i <= amountOfArr; i++) {
+
+	for (let i = 0; i < amountOfArr; i++) {
+		let shortArr = []
 		for (let j = 0; j < 3; j++) {
-			resultArr[i] = counter
+			shortArr.push(counter)
 			counter++
 		}
+		resultArr[i] = shortArr
 	}
+	return resultArr
 }
+
+const resultArr = getArray(9)
+
+console.log(resultArr)
