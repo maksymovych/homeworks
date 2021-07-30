@@ -57,9 +57,7 @@ const namesOfDays = {
 	en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
 }
 
-const getNameOfDay = (day, lang) => {
-	return namesOfDays[lang][day - 1]
-}
+const getNameOfDay = (day, lang) => namesOfDays[lang][day - 1]
 
 const dayName = getNameOfDay(1, 'ru')
 
