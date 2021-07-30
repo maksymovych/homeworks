@@ -70,15 +70,13 @@ const dayName = getNameOfDay(1, 'ru')
  или отрицательные числа.*/
 
 const summOfTwoSmolest = (arr) => {
-	let summ = null
+	let sortArray = arr.sort((a, b) => a - b)
 
-	for (let i = 0; i < 2; i++) {
-		let min = arr[i]
-		for (let i = 1; i < arr.length; i++) {
-			min < arr[i] ? min : min = arr[i] && arr.splice(arr[i], 1)
-
+	for (let i = 0; i < sortArray.length - 1; i++) {
+		if (sortArray[i] < 0 || sortArray[i] === sortArray[i + 1]) {
+			console.log("array annavailabel")
+			return
 		}
-		summ += min
 	}
-	return summ
+	return sortArray[0] + sortArray[1]
 }
