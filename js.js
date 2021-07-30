@@ -48,4 +48,11 @@ const getArray = (amount) => {
 
 const resultArr = getArray(9)
 
-console.log(resultArr)
+//console.log(resultArr)
+
+//Task 3
+
+const namesOfDays = {
+	ru: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+	en: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+}
