@@ -1,5 +1,8 @@
+//Link to previous commits (all homeworks was on differennt branches):
+//  https://github.com/maksymovych/home.works.lesson11
 
-/*Task 1: Создать цикл на 10 итераций. На каждой итерации если i четное, то вывести в консоль слово Fiz, если i не четное, то вывести в консоль слово Buz, если i кротное цифре 3, то вывести FizBuz.*/
+
+//Task 1
 
 for (let i = 1; i <= 10; i++) {
 	if (i % 3 === 0) {
@@ -11,7 +14,7 @@ for (let i = 1; i <= 10; i++) {
 	}
 }
 
-//Task 2: Написать логику нахождения факториала числа.
+//Task 2
 
 const findFactorial = (number) => {
 	let result = 1;
@@ -26,8 +29,7 @@ const factorial = findFactorial(7);
 console.log("Factorial is: " + factorial)
 
 
-/*Task 3: В пачке бумаги 500 листов. За неделю в офисе расходуется 1200 листов.
-Какое наименьшее количество пачек бумаги нужно купить в офис на 8 недель?*/
+//Task 3
 
 const sheetsInReamPaper = 500;
 const consumptionPerWeek = 1200;
@@ -46,11 +48,7 @@ const amountOfReamPaper = howManyReamPaper(weeks)
 console.log("Amount of ream paper is: " + amountOfReamPaper)
 
 
-/*Task 4: Создать функцию, которая выведет в консоль номер этажа
- и номер подъезда по номеру квартиры. Этажей у нас 9, квартир на этаже по 3
-  const porch = ?
- const floor = ?
- */
+// Task 4
 
 const roomsOnFloor = 3;
 const floors = 9;
@@ -104,9 +102,7 @@ const porchAndFloorToConsole = (roomNumber) => {
 porchAndFloorToConsole(123)
 
 
-/* Task 5: Вывести в консоль пирамиду. Переменная указывает количество строк
- из которых построится пирамида. Пирамида должна строится 
- в одинаковом визуально виде между собой, но строго учитывая кол-во строк*/
+// Task 5
 
 const paintSymbol = (amount, symbol) => {
 	let string = symbol
