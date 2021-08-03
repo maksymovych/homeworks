@@ -28,20 +28,18 @@ for (let key in citiesAndCountries) {
 const getArray = (amount) => {
 
 	if (amount < 3 || amount % 3 !== 0) {
-		console.log("Type number multiple of three")
+		console.log("Enter an array multiple of three")
 		return
 	}
-	const amountOfArr = amount / 3
-	let counter = 1
-	let resultArr = []
 
-	for (let i = 0; i < amountOfArr; i++) {
-		let shortArr = []
-		for (let j = 0; j < 3; j++) {
-			shortArr.push(counter)
-			counter++
+	let resultArr = []
+	let shortArr = []
+	for (let i = 1; i <= amount; i++) {
+		shortArr[shortArr.length] = i
+		if (i % 3 === 0) {
+			resultArr[resultArr.length] = shortArr
+			shortArr = []
 		}
-		resultArr[i] = shortArr
 	}
 	return resultArr
 }
@@ -90,11 +88,11 @@ const summOfTwoSmolest = (arr) => {
 Например: [0, 0, 0, 1]рассматривается как 0001двоичное представление 1.*/
 
 const toDecimal = (arr) => {
-	let number = 0
+	let decimalCounter = 0
 	let counter = 1
 	for (let i = arr.length - 1; i >= 0; i--) {
-		arr[i] === 1 ? number += counter : number
+		arr[i] === 1 ? decimalCounter += counter : decimalCounter
 		counter *= 2
 	}
-	return number
+	return decimalCounter
 }
