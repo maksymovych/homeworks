@@ -1,5 +1,4 @@
 //Task 1
-
 function Employee(id, name, surname, salary, workExperience, isPrivileges, gender) {
 	this.id = id
 	this.name = name
@@ -11,14 +10,21 @@ function Employee(id, name, surname, salary, workExperience, isPrivileges, gende
 }
 
 //Task 2
-
 Employee.prototype.getFullName = function () {
 	return `${this.name} ${this.surname}`
 }
 
 //Task 3
 let createEmployesFromArr = (arr) => {
-	return arr.map((item) => new Employee(item.id, item.name, item.surname,
+	return arr.map(item => new Employee(item.id, item.name, item.surname,
 		item.salary, item.workExperience, item.isPrivileges, item.gender))
 }
+
 const emplyeeConstructArr = createEmployesFromArr(emplyeeArr)
+
+//Task 4
+const getFullNamesFromArr = (arr) => {
+	return arr.map(item => item.getFullName())
+}
+
+const fullNames = getFullNamesFromArr(emplyeeConstructArr)
