@@ -18,6 +18,7 @@ Employee.prototype.getFullName = function () {
 
 //Task 3
 let createEmployesFromArr = (arr) => {
-
+	return arr.map((item) => new Employee(item.id, item.name, item.surname,
+		item.salary, item.workExperience, item.isPrivileges, item.gender))
 }
 const emplyeeConstructArr = createEmployesFromArr(emplyeeArr)
