@@ -36,3 +36,12 @@ const getMiddleSalary = (arr) => {
 }
 
 const midSalary = getMiddleSalary(emplyeeConstructArr)
+
+//Task 6
+
+const getRandomEmployee = (arr) => {
+	const randomIndex = Math.floor(Math.random() * arr.length)
+	return arr[randomIndex]
+}
+
+getRandomEmployee(emplyeeConstructArr)
