@@ -28,3 +28,11 @@ const getFullNamesFromArr = (arr) => {
 }
 
 const fullNames = getFullNamesFromArr(emplyeeConstructArr)
+
+//Task 5
+const getMiddleSalary = (arr) => {
+	const allSumm = arr.map(item => item.salary).reduce((accum, current) => accum + current)
+	return ~~(allSumm / arr.length)
+}
+
+const midSalary = getMiddleSalary(emplyeeConstructArr)
