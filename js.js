@@ -16,8 +16,10 @@ Employee.prototype.getFullName = function () {
 
 //Task 3
 let createEmployesFromArr = (arr) => {
-	return arr.map(item => new Employee(item.id, item.name, item.surname,
-		item.salary, item.workExperience, item.isPrivileges, item.gender))
+	const employeeArray = []
+	arr.map(item => employeeArray.push(new Employee(item.id, item.name, item.surname,
+		item.salary, item.workExperience, item.isPrivileges, item.gender)))
+	return employeeArray
 }
 
 const emplyeeConstructArr = createEmployesFromArr(emplyeeArr)
@@ -45,3 +47,68 @@ const getRandomEmployee = (arr) => {
 }
 
 getRandomEmployee(emplyeeConstructArr)
+
+
+//Task 7
+class Emploee {
+	constructor(employ) {
+		this.id = employ.id
+		this.name = employ.name
+		this.surname = employ.surname
+		this.salary = employ.salary
+		this.workExperience = employ.workExperience
+		this.isPrivileges = employ.isPrivileges
+		this.gender = employ.gender
+	}
+
+	get fullInfo() {
+		const arr = []
+		for (let key in this) {
+			arr.push(`${key} - ${this[key]}`)
+		}
+		return arr.join(", ")
+	}
+
+	set fullInfo(value) {
+		for (let key in value) {
+			if (this.hasOwnProperty(key)) {
+				this[key] = value[key]
+			}
+		}
+	}
+}
+
+const employeeObj = new Emploee(emplyeeArr[0]);
+
+
+
+// Результат
+//  id - 1, name - Денис, surname - Хрущ
+
+// Создаем экземпляр на основе объекта 
+// который берем из массива по 0 индексу
+
+
+// Результат employeeObj
+//   {
+//     id: 1,
+//     name: 'Денис',
+//     surname: 'Хрущ',
+//     salary: 1010, 
+//     workExperience: 10, 
+//     isPrivileges: false, 
+//     gender: 'male',
+//   }
+
+
+//employeeObj.fullInfo = { name: 'Вася', salary: 9000 }
+// Результат employeeObj
+//   {
+//     id: 1,
+//     name: 'Вася',
+//     surname: 'Хрущ',
+//     salary: 1010, 
+//     workExperience: 10, 
+//     isPrivileges: false, 
+//     gender: 'male',
+//   }
