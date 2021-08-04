@@ -79,36 +79,3 @@ class Emploee {
 }
 
 const employeeObj = new Emploee(emplyeeArr[0]);
-
-
-
-// Результат
-//  id - 1, name - Денис, surname - Хрущ
-
-// Создаем экземпляр на основе объекта 
-// который берем из массива по 0 индексу
-
-
-// Результат employeeObj
-//   {
-//     id: 1,
-//     name: 'Денис',
-//     surname: 'Хрущ',
-//     salary: 1010, 
-//     workExperience: 10, 
-//     isPrivileges: false, 
-//     gender: 'male',
-//   }
-
-
-//employeeObj.fullInfo = { name: 'Вася', salary: 9000 }
-// Результат employeeObj
-//   {
-//     id: 1,
-//     name: 'Вася',
-//     surname: 'Хрущ',
-//     salary: 1010, 
-//     workExperience: 10, 
-//     isPrivileges: false, 
-//     gender: 'male',
-//   }
