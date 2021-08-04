@@ -1,12 +1,6 @@
 //Task 1
-function Employee(id, name, surname, salary, workExperience, isPrivileges, gender) {
-	this.id = id
-	this.name = name
-	this.surname = surname
-	this.salary = salary
-	this.workExperience = workExperience
-	this.isPrivileges = isPrivileges
-	this.gender = gender
+function Employee(obj) {
+	return Object.assign(this, obj)
 }
 
 //Task 2
@@ -17,8 +11,7 @@ Employee.prototype.getFullName = function () {
 //Task 3
 let createEmployesFromArr = (arr) => {
 	const employeeArray = []
-	arr.map(item => employeeArray.push(new Employee(item.id, item.name, item.surname,
-		item.salary, item.workExperience, item.isPrivileges, item.gender)))
+	arr.map(item => employeeArray.push(new Employee(item)))
 	return employeeArray
 }
 
@@ -40,7 +33,6 @@ const getMiddleSalary = (arr) => {
 const midSalary = getMiddleSalary(emplyeeConstructArr)
 
 //Task 6
-
 const getRandomEmployee = (arr) => {
 	const randomIndex = Math.floor(Math.random() * arr.length)
 	return arr[randomIndex]
