@@ -1,48 +1,44 @@
-//Task 1
+//Task1
+
 class Student {
 	constructor(enrollee) {
-		this.id = getId()
 		this.name = enrollee.name
 		this.surname = enrollee.surname
-		this.raitingPoint = enrollee.raitingPoint
+		this.ratingPoint = enrollee.ratingPoint
 		this.schoolPoint = enrollee.schoolPoint
-		this.isSelfPayment = isSelfPay()
+		this.id = Student.getId()
+		this.isSelfPayment = Student.getPayment(this.ratingPoint)
+		Student.addStudent(this)
 	}
 
-	static id = 0
+	static id = 1
 	static getId() {
 		return this.id++
 	}
 
-	static isSelfPay() {
-		if (raitingPoint >= 800) {
-
+	static getPayment(rating) {
+		if (rating >= 800 && this.listOfStudents.length < 5) {
+			return false
+		} else if (rating >= 800 && this.listOfStudents.length >= 5) {
+			//	const index = this.
 		}
+		return true
+	}
+
+	static listOfStudents = []
+	static addStudent(student) {
+		if (!student.isSelfPayment) {
+			this.listOfStudents.push(student)
+		}
+
 	}
 
 	get listOfStudents() {
-		return []
-	}
-
-	set listOfStudents() {
-
+		// if(!this.isSelfPayment){}
+		return this.listOfStudents
 	}
 }
-
-
-
-Student.listOfStudents
-/// [] - пустой изначально
-
-// Вызвал класс
-new Student({ name: 'Valeriy', ...})
-
-
-Student.listOfStudents
-/// [{ id: 1,  name: 'Valeriy', ...},  и т.д.]
-
-// Снова вызвал 
-new Student({ name: 'Maks', ...})
-
-Student.listOfStudents
-/// [{ id: 1,  name: 'Valeriy', ...}, { id: 2,  name: 'Maks', ...},  и т.д.]
+const students = []
+for (let i = 0; i < 10; i++) {
+	students[i] = new Student(studentArr[i])
+}
