@@ -26,16 +26,25 @@ class Student {
 			return false
 		} else if (currentRating >= 800 && listLangth >= 5) {
 
-			this.listOfStudents.sort((a, b) => a.ratingPoint - b.ratingPoint)
-			let pointIndex = this.listOfStudents.findIndex(item => item.ratingPoint < currentRating)
+			Student.sortArray(this.listOfStudents, "ratingPoint")
 
-			if (pointIndex === -1) {
-				this.listOfStudents.sort((a, b) => a.schoolPoint - b.schoolPoint)
-				pointIndex = this.listOfStudents.findIndex(item => item.ratingPoint < currentSchoolPoint)
+			if (this.listOfStudents[0].ratingPoint < currentRating) {
+				this.listOfStudents[0].isSelfPayment = true
+				this.listOfStudents.splice(0, 1, student)
+
+				return false
 			}
-			this.listOfStudents.splice(pointIndex, 1, student)
+			if (this.listOfStudents[0].ratingPoint === currentRating) {
+				const listOfSameRating = this.listOfStudents.filter(item => item.ratingPoint === currentRating)
+				Student.sortArray(listOfSameRating, "schoolPoint")
+				const lastRating = this.listOfStudents.findIndex(item => item.schoolPoint === listOfSameRating[0].schoolPoint)
+				if (this.listOfStudents[lastRating].schoolPoint < currentSchoolPoint) {
+					this.listOfStudents[lastRating].isSelfPayment = true
+					this.listOfStudents.splice(lastRating, 1, student)
 
-			return pointIndex !== -1 ? false : true
+					return false
+				}
+			}
 		}
 		return true
 	}
@@ -45,10 +54,15 @@ class Student {
 	}
 }
 
+Student.sortArray = (array, sortItem) => {
+	return array.sort((a, b) => a[sortItem] - b[sortItem])
+}
+
 for (let i = 0; i < studentArr.length; i++) {
 	new Student(studentArr[i])
 }
 
+//Task 2
 class CustomString {
 
 	reverse(str) {
@@ -85,4 +99,20 @@ class CustomString {
 
 const myString = new CustomString();
 
-console.log(myString.ucWords("nmnmnUYUYsdsHF sdsdsd sdsdsd e"))
+//console.log(myString.ucWords("nmnmnUYUYsdsHF sdsdsd sdsdsd e"))
+
+//Task 3
+class Validator {
+
+	checkIsEmail(email) {
+		return true
+	}
+
+	checkIsDate(date) {
+		return true
+	}
+
+	checkIsPhone(phone) {
+		return true
+	}
+}
