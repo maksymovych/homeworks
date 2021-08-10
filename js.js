@@ -105,14 +105,22 @@ const myString = new CustomString();
 class Validator {
 
 	checkIsEmail(email) {
-		return true
+		const regExp = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+		return email.match(regExp) ? true : false
+	}
+	checkIsDomain(domain) {
+		const regExp = "^[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+		return domain.match(regExp) ? true : false
 	}
 
 	checkIsDate(date) {
-		return true
+		const regExp = "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[1-9][1-9]$"
+		return date.match(regExp) ? true : false
 	}
 
 	checkIsPhone(phone) {
-		return true
+		return phone.startsWith("+38")
 	}
 }
+var validator = new Validator();
+
