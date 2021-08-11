@@ -109,18 +109,39 @@ class Validator {
 		return email.match(regExp) ? true : false
 	}
 	checkIsDomain(domain) {
+		if (str.includes("..")) return false
 		const regExp = "^[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
 		return domain.match(regExp) ? true : false
 	}
 
 	checkIsDate(date) {
-		const regExp = "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[1-9][1-9]$"
+		const regExp = "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[1-9]{2}$"
 		return date.match(regExp) ? true : false
 	}
 
 	checkIsPhone(phone) {
-		return phone.startsWith("+38")
+		if (phone.length < 13 || phone.length > 18) return false
+		if (!phone.startsWith("+38")) return false
+		if (isDoubleItem(phone, "(") || isDoubleItem(phone, ")")
+			|| isDoubleItem(phone, " ") || isDoubleItem(phone, "-")) {
+			return false
+		}
+		if (consistUnapropriate(phone)) return false
 	}
 }
-var validator = new Validator();
+const validator = new Validator();
 
+const isDoubleItem = (str, item) => {
+	return str.includes(item + item) ? true : false
+}
+const consistUnapropriate = (phone) => {
+	debugger
+	let n = null
+	for (let i = 3; i < phone.length; i++) {
+		n = phone[i]
+		if (n % 1 !== 0 || n !== "(" || n !== ")" || n !== " " || n !== "-") {
+			return true
+		}
+	}
+	return false
+}
