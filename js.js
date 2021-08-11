@@ -10,7 +10,6 @@ class Student {
 		this.isSelfPayment = Student.getPayment(this, this.ratingPoint, this.schoolPoint)
 	}
 
-
 	static id = 1
 	static getId() {
 		return this.id++
@@ -115,7 +114,7 @@ class Validator {
 	}
 
 	checkIsDate(date) {
-		const regExp = "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[1-9]{2}$"
+		const regExp = "^([012][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)[0-9]{2}$"
 		return date.match(regExp) ? true : false
 	}
 
@@ -136,6 +135,7 @@ const validator = new Validator();
 const isDoubleItem = (str, item) => {
 	return str.includes(item + item) ? true : false
 }
+
 const consistUnapropriate = (phone) => {
 	let n = null
 	for (let i = 3; i < phone.length; i++) {
