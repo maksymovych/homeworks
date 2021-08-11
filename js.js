@@ -127,6 +127,7 @@ class Validator {
 			return false
 		}
 		if (consistUnapropriate(phone)) return false
+		return true
 	}
 }
 const validator = new Validator();
@@ -139,7 +140,7 @@ const consistUnapropriate = (phone) => {
 	let n = null
 	for (let i = 3; i < phone.length; i++) {
 		n = phone[i]
-		if (n % 1 !== 0 || n !== "(" || n !== ")" || n !== " " || n !== "-") {
+		if (n % 1 !== 0 && (n !== "(" || n !== ")" || n !== " " || n !== "-")) {
 			return true
 		}
 	}
