@@ -120,8 +120,9 @@ class Validator {
 	}
 
 	checkIsPhone(phone) {
-		if (phone.length < 13 || phone.length > 18) return false
+		if (phone.length < 13 || phone.length > 20) return false
 		if (!phone.startsWith("+38")) return false
+		if (phone[phone.length - 1] % 1 !== 0) return false
 		if (isDoubleItem(phone, "(") || isDoubleItem(phone, ")")
 			|| isDoubleItem(phone, " ") || isDoubleItem(phone, "-")) {
 			return false
@@ -136,11 +137,10 @@ const isDoubleItem = (str, item) => {
 	return str.includes(item + item) ? true : false
 }
 const consistUnapropriate = (phone) => {
-	debugger
 	let n = null
 	for (let i = 3; i < phone.length; i++) {
 		n = phone[i]
-		if (n % 1 !== 0 && (n !== "(" || n !== ")" || n !== " " || n !== "-")) {
+		if (n % 1 !== 0 && n !== "(" && n !== ")" && n !== " " && n !== "-") {
 			return true
 		}
 	}
