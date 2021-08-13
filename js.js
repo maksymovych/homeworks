@@ -8,8 +8,21 @@ function count() {
 }
 
 const counter = count()
-counter(9)
-counter(5)
-counter(1)
+//counter(9)
+
 
 //Task 2
+const updatedArr = () => {
+	let arr = []
+	return (obj) => {
+		if (obj === undefined) {
+			arr = []
+			return []
+		}
+		arr.push(obj)
+		return arr
+	}
+}
+
+const getUpdatedArr = updatedArr()
+getUpdatedArr(3)
