@@ -7,7 +7,7 @@ function count() {
 	}
 }
 
-const counter = count()
+const counter = count
 //counter(9)
 
 
@@ -24,5 +24,25 @@ const updatedArr = () => {
 	}
 }
 
-const getUpdatedArr = updatedArr()
-getUpdatedArr(3)
+const getUpdatedArr = updatedArr
+//getUpdatedArr(3)
+
+//Task 3 
+const setTimer = () => {
+	let result = 0
+	return () => {
+		const time = new Date()
+		if (result === 0) {
+			result = time.getTime() / 1000
+			return 'Enabled'
+		}
+
+		result += time.getTime()
+		return result
+	}
+
+}
+
+const getTime = setTimer
+
+getTime()
