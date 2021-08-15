@@ -29,14 +29,18 @@ const getUpdatedArr = updatedArr()
 
 //Task 3 
 const setTimer = () => {
+	let prevTime = 0
 	let currentTime = 0
-	let time = 0
 	return () => {
-		if (currentTime === 0) {
-			currentTime = new Date().getTime()
+		if (prevTime === 0) {
+			prevTime = new Date().getTime()
 			return 'Enabled'
 		}
-		return Math.round((new Date().getTime() - currentTime) / 1000)
+		currentTime = Math.round((new Date().getTime() - prevTime) / 1000)
+		prevTime = new Date().getTime()
+		return currentTime
 	}
 }
 const getTime = setTimer()
+
+//Task 4
