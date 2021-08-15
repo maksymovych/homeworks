@@ -17,7 +17,7 @@ const updatedArr = () => {
 	return (obj) => {
 		if (obj === undefined) {
 			arr = []
-			return []
+			return arr
 		}
 		arr.push(obj)
 		return arr
@@ -59,28 +59,29 @@ const timer = time => {
 	time = Math.floor(time)
 
 	const SECONDS_IN_MINUT = 60
-	let minutes = 0
-	let seconnds = 0
-
-	const timeLog = (t) => {
-		const getMinutes = (m) => {
-			let min = Math.floor(m / SECONDS_IN_MINUT)
+	let counter = time
+	const timeLog = () => {
+		debugger
+		if (counter < 1) {
+			clearInterval(timer)
+			console.log("Timer End")
+			return
+		}
+		const getMinutes = () => {
+			let min = Math.floor(counter / SECONDS_IN_MINUT)
 			if (min === 0) return "00"
 			if (min < 10) return "0" + min
 			return min
 		}
-		const getSeconds = (s) => {
-			return 0
+		const getSeconds = () => {
+			let sec = counter % SECONDS_IN_MINUT
+			if (sec < 10) return "0" + sec
+			return sec
 		}
-		console.log(getMinutes(t) + ":" + getSeconds(t))
+		console.log(getMinutes() + ":" + getSeconds())
+		counter--
 	}
 
-	for (let i = time; i >= 0; i--) {
-		const timerToConsole = timeLog(i)
-		setInterval(timerToConsole, 1000)
-		if (i === 0) {
-			clearInterval(timerToConsole)
-			return "Timer End"
-		}
-	}
+	const timer = setInterval(timeLog, 100)
+	return "asasasas"
 }
