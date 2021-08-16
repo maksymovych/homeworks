@@ -41,16 +41,16 @@ const setTimer = () => {
 		return currentTime
 	}
 }
+
 const getTime = setTimer()
 
 //Task 4
-
 const timer = time => {
 	const isAvailableTime = () => {
-		if (time >= 1 && time < 6040) {
+		if (time >= 1 && time < 6000) {
 			return false
 		}
-		console.log("Time is anavailable. Must be number more then '0' and les then '6040' seconds")
+		console.log("Time is anavailable. Must be number more then '0' and les then '6000' seconds")
 		return true
 	}
 
@@ -61,10 +61,9 @@ const timer = time => {
 	const SECONDS_IN_MINUT = 60
 	let counter = time
 	const timeLog = () => {
-		debugger
 		if (counter < 1) {
+			console.log("Time End")
 			clearInterval(timer)
-			console.log("Timer End")
 			return
 		}
 		const getMinutes = () => {
@@ -82,6 +81,6 @@ const timer = time => {
 		counter--
 	}
 
-	const timer = setInterval(timeLog, 100)
-	return "asasasas"
+	const timer = setInterval(timeLog, 1000)
+	return
 }
