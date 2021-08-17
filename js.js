@@ -22,3 +22,36 @@ const getAllValues = (obj) => {
 //getAllValues(obj) /// ["Vasya", 1]
 
 //Task4
+const secondObj = {
+	id: 4,
+	name: 'Katya'
+}
+
+const arr2 = [
+	{
+		id: 1,
+		name: 'Kolya'
+	},
+	{
+		id: 2,
+		name: 'Petya'
+	},
+];
+const insertIntoArr = (arr, id) => {
+	const index = arr2.findIndex((obj => obj.id === id))
+	index === -1 ? console.log('Id not exist') : arr2.splice(index, 0, arr)
+}
+insertIntoArr(secondObj, 1)
+console.log(arr2)
+
+//Task5
+class Condidate {
+	constructor(obj) {
+
+	}
+	get state() {
+		return this.addres
+	}
+}
+const condidate = new Condidate(condidateArr[0])
+condidate.state /// Colorado
