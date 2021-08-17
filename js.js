@@ -42,16 +42,23 @@ const insertIntoArr = (arr, id) => {
 	index === -1 ? console.log('Id not exist') : arr2.splice(index, 0, arr)
 }
 insertIntoArr(secondObj, 1)
-console.log(arr2)
+//console.log(arr2)
 
 //Task5
 class Condidate {
 	constructor(obj) {
-
+		Object.assign(this, obj)
 	}
 	get state() {
-		return this.addres
+		return this.address.split(",")[2]
 	}
 }
-const condidate = new Condidate(condidateArr[0])
-condidate.state /// Colorado
+const condidate = new Condidate(condidateArr[3])
+//console.log(condidate.state) /// Colorado
+
+//Task6
+const getCompanyNames = () => {
+	const result = condidateArr.map(item => item.company).sort()
+	return console.log(result)
+}
+getCompanyNames() /// [""EZENT, "JASPER" ... ]
