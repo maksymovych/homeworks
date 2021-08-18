@@ -99,7 +99,7 @@ const getCondidatesByGender = (gender) => {
 }
 
 //Task10
-const newReduce = (arr) => {
+const reduce = (arr) => {
 	let result = 0
 	for (let item of arr) {
 		result += item
@@ -107,10 +107,11 @@ const newReduce = (arr) => {
 	return result
 }
 
-const newJoin = (arr, separat = ',') => {
+const join = (arr, separat = ',') => {
 	let result = ''
 	for (let i = 0; i < arr.length; i++) {
-		result += arr[i] + separat
+		result += arr[i]
+		i < arr.length - 1 ? result += separat : result
 	}
 	return result
 }
