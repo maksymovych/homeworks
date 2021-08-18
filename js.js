@@ -67,4 +67,51 @@ const getCompanyNames = () => {
 	}
 	return result
 }
-getCompanyNames() /// [""EZENT, "JASPER" ... ]
+
+//Task7
+const getUsersByYear = (y) => {
+	const year = y.toString()
+	const result = []
+	condidateArr.map(item => {
+		if (item.registered.split("-")[0] === year) {
+			result.push(item._id)
+		}
+	})
+	console.log(result)
+}
+//getUsersByYear(2016)
+
+//Task8
+const getCondidatesByUnreadMsg = (messageAmount) => {
+	const result = []
+	for (let key in condidateArr) {
+		const greeting = parseInt(condidateArr[key].greeting.match(/\d+/))
+		if (greeting === messageAmount) {
+			result.push(condidateArr[key])
+		}
+	}
+	return result
+}
+
+//Task9
+const getCondidatesByGender = (gender) => {
+	return condidateArr.filter(condidate => condidate.gender === gender)
+}
+
+//Task10
+const newReduce = (arr) => {
+	let result = 0
+	for (let item of arr) {
+		result += item
+	}
+	return result
+}
+
+const newJoin = (arr, separat = ',') => {
+	let result = ''
+	for (let i = 0; i < arr.length; i++) {
+		result += arr[i] + separat
+	}
+	return result
+}
+
