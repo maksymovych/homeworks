@@ -58,7 +58,13 @@ const condidate = new Condidate(condidateArr[3])
 
 //Task6
 const getCompanyNames = () => {
-	const result = condidateArr.map(item => item.company).sort()
-	return console.log(result)
+	const result = []
+	const array = condidateArr.map(item => item.company)
+	for (let item of array) {
+		if (!result.includes(item)) {
+			result.push(item)
+		}
+	}
+	return result
 }
 getCompanyNames() /// [""EZENT, "JASPER" ... ]

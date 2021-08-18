@@ -84,7 +84,7 @@ const condidateArr = [
         "eyeColor": "brown",
         "name": "Lillie Soto",
         "gender": "female",
-        "company": "JASPER",
+        "company": "EZENT",
         "email": "lilliesoto@jasper.com",
         "phone": "+1 (869) 408-3982",
         "address": "224 Meeker Avenue, Mappsville, Minnesota, 6564",
