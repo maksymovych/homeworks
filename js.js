@@ -5,21 +5,18 @@ const removeUser = (arr, index) => {
 	arr.splice(index, 1)
 }
 removeUser(arr, 1)
-//console.log(arr)
 
 //Task2
 const obj = { name: 'Vasya', age: 1 }
 
 const getAllKeys = (obj) => {
-	console.log(Object.keys(obj))
+	return Object.keys(obj)
 }
-//getAllKeys(obj) /// ["name", "age"]
 
 //Task3
 const getAllValues = (obj) => {
-	console.log(Object.values(obj))
+	return Object.values(obj)
 }
-//getAllValues(obj) /// ["Vasya", 1]
 
 //Task4
 const secondObj = {
@@ -54,7 +51,6 @@ class Condidate {
 	}
 }
 const condidate = new Condidate(condidateArr[3])
-//console.log(condidate.state) /// Colorado
 
 //Task6
 const getCompanyNames = () => {
@@ -77,9 +73,8 @@ const getUsersByYear = (y) => {
 			result.push(item._id)
 		}
 	})
-	console.log(result)
+	return result
 }
-//getUsersByYear(2016)
 
 //Task8
 const getCondidatesByUnreadMsg = (messageAmount) => {
