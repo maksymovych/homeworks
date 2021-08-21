@@ -13,16 +13,31 @@ const searchCandidatesByPhoneNumber = phone => {
 	}
 
 	const enteredNumber = phoneToNumbers(phone.toString())
-	console.log(enteredNumber)
 
 	if (enteredNumber.length < 2 || enteredNumber.length > 11) {
 
 		return 'Enter available number'
 	}
 	const result = condidateArr.filter(item => phoneToNumbers(item.phone).includes(enteredNumber))
-	console.log(result
-		.map(item => item.phone))
 	return result
 }
 
-searchCandidatesByPhoneNumber(+40)
+//Task2
+const getCandidateById = id => {
+
+	const formatData = (inputStr) => {
+		const inputArr = inputStr.split('-')
+		let result = `${inputArr[2].slice(0, 2)}/${inputArr[1]}/${inputArr[0]}`
+		return result
+	}
+
+	condidateArr.some(item => {
+		if (item._id === id) {
+			const result = { ...item, registered: formatData(item.registered) }
+			console.log(result)
+			return result
+		}
+		return 'Id is not exist'
+	})
+
+}
