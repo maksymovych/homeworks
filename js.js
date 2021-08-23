@@ -39,5 +39,28 @@ const getCandidateById = id => {
 		}
 		return 'Id is not exist'
 	})
+}
 
+//Task3
+const sortCandidatesArr = (sortBy = '') => {
+	if (sortBy === '' || sortBy === null || sortBy === false) {
+		return condidateArr
+	}
+
+	const arrayCondidate = [...condidateArr]
+
+	const toNumber = (n) => Number.parseInt((n.slice(1)).replaceAll(',', ''))
+
+	arrayCondidate.sort((a, b) => {
+
+		const aBalance = toNumber(a.balance)
+		const bBalance = toNumber(b.balance)
+
+		if (sortBy === 'asc') {
+			return aBalance - bBalance
+		}
+		if (sortBy === 'desc') {
+			return bBalance - aBalance
+		}
+	})
 }
