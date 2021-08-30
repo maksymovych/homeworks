@@ -27,7 +27,7 @@ for (let key in citiesAndCountries) {
 
 const getArray = (amount) => {
 
-	if (amount < 3 || amount % 3 !== 0) {
+	if (amount < 3 || amount % 3) {
 		console.log("Enter an array multiple of three")
 		return
 	}
@@ -36,7 +36,7 @@ const getArray = (amount) => {
 	let shortArr = []
 	for (let i = 1; i <= amount; i++) {
 		shortArr[shortArr.length] = i
-		if (i % 3 === 0) {
+		if (!(i % 3)) {
 			resultArr[resultArr.length] = shortArr
 			shortArr = []
 		}
@@ -63,7 +63,7 @@ const dayName = getNameOfDay(1, 'ru')
 
 /*Task 4: Создайте функцию, которая возвращает сумму двух наименьших положительных чисел
  из массива минимум 4 положительных целых чисел. Не передаются числа с плавающей запятой
- или отрицательные числа.*/
+ или отрицательные числа. Числа не доджны повторяться*/
 
 const summOfTwoSmolest = (arr) => {
 	if (arr.length < 4) {
@@ -74,8 +74,8 @@ const summOfTwoSmolest = (arr) => {
 	let sortArray = arr.sort((a, b) => a - b)
 
 	for (let i = 0; i < sortArray.length; i++) {
-		if (sortArray[i] < 0 || sortArray[i] % 1 !== 0
-			|| (sortArray[i] === sortArray[i + 1] && i < arr.length - 1)) {
+		if (sortArray[i] < 0 || sortArray[i] % 1
+			|| ( i < arr.length - 1 && sortArray[i] === sortArray[i + 1])) {
 			console.log("Unavailable array")
 			return
 		}
@@ -85,7 +85,7 @@ const summOfTwoSmolest = (arr) => {
 
 /*Task 5:
 Дан массив единиц и нулей, преобразуйте эквивалентное двоичное значение в целое число.
-Например: [0, 0, 0, 1]рассматривается как 0001двоичное представление 1.*/
+Например: [0, 0, 0, 1] рассматривается как 0001 двоичное представление 1.*/
 
 const toDecimal = (arr) => {
 	let decimalCounter = 0
