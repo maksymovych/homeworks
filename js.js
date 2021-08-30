@@ -67,10 +67,9 @@ const sortCandidatesArr = (sortBy = '') => {
 
 //Task 4
 const getEyeColorMap = () => {
-	const resultArray = {}
+	const resultArray = new Map()
 	condidateArr.forEach(element => {
-		console.log(element.eyeColor)
-		resultArray[element.eyeColor] = element
+		resultArray.set(element.eyeColor, element)
 	});
 	return resultArray
 }
