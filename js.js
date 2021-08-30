@@ -5,11 +5,11 @@
 //Task 1
 
 for (let i = 1; i <= 10; i++) {
-	if (i % 3 === 0) {
+	if (!(i % 3)) {
 		console.log("FizBuz")
-	} else if (i % 2 === 0) {
+	} else if (!(i % 2)) {
 		console.log("Fiz")
-	} else if (i % 2 === 1) {
+	} else if (!(i % 2)) {
 		console.log("Buz");
 	}
 }
@@ -37,7 +37,7 @@ const weeks = 2;
 
 const howManyReamPaper = (weeksAmount) => {
 	const allConsumption = weeksAmount * consumptionPerWeek / sheetsInReamPaper
-	if (allConsumption % 1 === 0) {
+	if (!(allConsumption % 1)) {
 		return allConsumption
 	}
 	return (allConsumption - allConsumption % 1) + 1
