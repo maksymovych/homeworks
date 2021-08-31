@@ -94,20 +94,35 @@ const getCondidatesByGender = (gender) => {
 }
 
 //Task10
-const reduce = (arr) => {
-	let result = 0
-	for (let item of arr) {
-		result += item
-	}
-	return result
-}
+// initialValue can be only number or string
+Object.defineProperty(Array.prototype, 'cReduce', {
+	value: function (callback, initialValue) {
 
-const join = (arr, separat = ',') => {
-	let result = ''
-	for (let i = 0; i < arr.length; i++) {
-		result += arr[i]
-		i < arr.length - 1 ? result += separat : result
-	}
-	return result
-}
+		if (!Number(initialValue)){
+			return "InitialValue can be only number or string"
+		}
 
+		let result = initialValue || 0
+
+		for (let index in this) {
+			result = callback(result, this[index], index, this)
+		}
+
+		return result
+	},
+	enumerable: false
+})
+
+Object.defineProperty(Array.prototype, 'cJoin', {
+	value: function (separat) {
+		let result = ''
+		separat ? separat : separat = ','
+
+		for (let index in this) {
+		result += this[index]
+		index < this.length - 1 ? result += separat : result
+	}
+		return result
+	},
+	enumerable: false
+})
