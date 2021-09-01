@@ -54,37 +54,27 @@ const condidate = new Condidate(condidateArr[3])
 
 //Task6
 const getCompanyNames = () => {
-	const result = []
-	const array = condidateArr.map(item => item.company)
-	for (let item of array) {
-		if (!result.includes(item)) {
-			result.push(item)
-		}
-	}
-	return result
+
+	return condidateArr.map(item => item.company)
+	.filter((item, index, arr) => arr.indexOf(item) === index)
 }
 
 //Task7
 const getUsersByYear = (y) => {
 	const year = y.toString()
-	const result = []
-	condidateArr.map(item => {
-		if (item.registered.split("-")[0] === year) {
-			result.push(item._id)
-		}
-	})
-	return result
+
+	return condidateArr.filter(item=> item.registered.split("-")[0] === year)
+	.map(item=> item._id)
 }
 
 //Task8
 const getCondidatesByUnreadMsg = (messageAmount) => {
-	const result = []
-	for (let key in condidateArr) {
-		const greeting = parseInt(condidateArr[key].greeting.match(/\d+/))
-		if (greeting === messageAmount) {
-			result.push(condidateArr[key])
-		}
-	}
+	const result = condidateArr.filter(item => {
+		const greeting = parseInt(item.greeting.match(/\d+/))
+		
+		return greeting === messageAmount;
+	  });
+	 
 	return result
 }
 
