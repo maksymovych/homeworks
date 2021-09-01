@@ -3,12 +3,10 @@ const searchCandidatesByPhoneNumber = phone => {
 	const phoneToNumbers = (number) => {
 		let newNumber = ''
 
-		for (let i = 0; i < number.length; i++) {
-			const n = number[i]
-			if (n.match(/\d/)) {
-				newNumber += n
-			}
-		}
+		phone.forEach(item=>{
+			newNumber += item.match(/\d/) ? item : ''
+
+		} )
 		return newNumber
 	}
 
