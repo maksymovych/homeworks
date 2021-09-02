@@ -509,21 +509,9 @@ template {
 
 .button {
   padding: 10px 20px;
-  color: white;
+  color: darkgray;
   border-radius: 5px;
   border: none;
-  -webkit-box-shadow: 2px 2px 5px rgba(63, 62, 62, 0.8);
-          box-shadow: 2px 2px 5px rgba(63, 62, 62, 0.8);
-  text-shadow: 2px 2px 3px rgba(63, 62, 62, 0.8);
-  cursor: pointer;
-  -webkit-transition-duration: .7s;
-          transition-duration: .7s;
-}
-
-.button:hover {
-  -webkit-box-shadow: 2px 2px 5px rgba(214, 215, 221, 0.8);
-          box-shadow: 2px 2px 5px rgba(214, 215, 221, 0.8);
-  text-shadow: 2px 2px 3px rgba(62, 62, 63, 0.8);
 }
 
 .inactive {
@@ -531,7 +519,20 @@ template {
 }
 
 .active {
+  cursor: pointer;
   background-color: rgba(14, 73, 181, 0.8);
+  color: white;
+  -webkit-box-shadow: 2px 2px 5px rgba(199, 147, 147, 0.8);
+          box-shadow: 2px 2px 5px rgba(199, 147, 147, 0.8);
+  text-shadow: 2px 2px 3px rgba(63, 62, 62, 0.8);
+  -webkit-transition-duration: .7s;
+          transition-duration: .7s;
+}
+
+.active:hover {
+  -webkit-box-shadow: 2px 2px 5px rgba(214, 215, 221, 0.8);
+          box-shadow: 2px 2px 5px rgba(214, 215, 221, 0.8);
+  text-shadow: 2px 2px 3px rgba(62, 62, 63, 0.8);
 }
 
 .logo-cart {
