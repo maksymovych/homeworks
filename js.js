@@ -62,9 +62,8 @@ const getEyeColorMap = () => {
 	
 	return condidateArr.reduce((accum, current)=>{
 		const color = current.eyeColor
-		
+
 		if (!accum[color]){
-			debugger
 			accum[color] = []
 		}
 
