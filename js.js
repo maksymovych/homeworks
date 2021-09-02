@@ -28,14 +28,9 @@ const getCandidateById = id => {
 		return result
 	}
 
-	condidateArr.some(item => {
-		if (item._id === id) {
-			const result = { ...item, registered: formatData(item.registered) }
-			console.log(result)
-			return result
-		}
-		return 'Id is not exist'
-	})
+	const candidate = condidateArr.find(item => item._id === id)
+		
+	return  { ...candidate, registered: formatData(candidate.registered) }
 }
 
 //Task3
@@ -64,12 +59,17 @@ const sortCandidatesArr = (sortBy = '') => {
 
 //Task 4
 const getEyeColorMap = () => {
-	const result = {}
-	condidateArr.forEach(candidate => {
-		if (!result[candidate.eyeColor]){
-			result[candidate.eyeColor] = []
-		} 
-		result[candidate.eyeColor].push(candidate)
-	});
-	return result
+	
+	return condidateArr.reduce((accum, current)=>{
+		const color = current.eyeColor
+		
+		if (!accum[color]){
+			debugger
+			accum[color] = []
+		}
+
+		accum[color][accum[color].length] =  current
+
+		return accum
+	}, {})
 }
