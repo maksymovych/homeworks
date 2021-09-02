@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "icomoon";
+  src: url("../../fonts/");
+  src: url("../../fonts/#iefix") format("embedded-opentype"), url("../../fonts/icomoon.ttf?480s05") format("truetype"), url("../../fonts/icomoon.woff?480s05") format("woff"), url("../../fonts/icomoon.svg?480s05#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+[class^=icon-], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 22px;
+  margin-left: 5px;
+  margin-right: 5px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow_left:before {
+  content: "";
+}
+
+.icon-cart:before {
+  content: "";
+}
+
+.icon-check:before {
+  content: "";
+  color: #51fd42;
+}
+
+.icon-close:before {
+  content: "";
+  color: red;
+  font-size: 33px;
+}
+
+.icon-filter:before {
+  content: "";
+  color: #fff;
+}
+
+.icon-like_empty:before {
+  content: "";
+}
+
+.icon-like_filled:before {
+  content: "";
+  color: red;
+}
+
+.icon-search:before {
+  content: "";
+}
+
+.icon-settings:before {
+  content: "";
+}
+
+.icon-coin-dollar:before {
+  content: "";
+}
+
+.icon-cross:before {
+  content: "";
+}
+
+.icon-checkmark:before {
+  content: "";
+}
+
+.icon-checkmark2:before {
+  content: "";
+}

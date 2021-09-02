@@ -1,15 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MacOutlet</title>
+    <link rel="stylesheet" href="css/main-style.css">
 </head>
 
-<body>
-	<script src="js.js"></script>
+<body id="body">
+    <div class="wrapper">
+        <header class="header">
+            <div class="logo-cart box-wrapper">
+                <div class="logo">
+                    <img src='img/header/logo.png' alt="logo" />
+                </div>
+                <div class="cart">
+                    <span class="icon-cart circle"></span>
+                </div>
+            </div>
+            <div class="banner" style="background: center / cover no-repeat url('img/banners/iphone_12_banner.jpg')">
+                <div class="banner__inner-wrapper">
+                    <h1 class="banner__title">AirPods Pro</h1>
+                    <div class="banner__button">
+                        <button class="active button">Add to card</button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav box">
+                <div class="search">
+                    <span class="icon-search"></span>
+                    <input class="search__input" type="text" placeholder="Enter device name...">
+                </div>
+                <nav class="navigation">
+                    <span class="icon-filter navigation__icon"></span>
+                    <span class="icon-settings navigation__icon"></span>
+                </nav>
+            </div>
+        </header>
+        <main class="main boxes">
+            <div class="main__filter box-wrapper">
+                <div class="flter box">
+                    <div class="filter__title">
+                        <h3>Price</h3>
+                        <span class="icon-arrow_left"></span>
+                    </div>
+                    <hr>
+                    <div class="filter__fields">
+                        <label class="filter__item" id="text-from" for="from">From
+                            <input type="number" id="from" />
+                        </label>
+                        <label class="filter__item" id="text-to" for="to">To
+                            <input type="number" id="to" />
+                        </label>
+                    </div>
+                    <hr>
+                    <div class="filter__title">
+                        <h3 class="filter__title">Color</h3>
+                        <span class="icon-arrow_left"></span>
+                    </div>
+                    <hr>
+                    <div class="filter__fields">
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                    </div>
+                    <hr>
+                    <div class="filter__title">
+                        <h3 class="filter__title">Memory</h3>
+                        <span class="icon-arrow_left"></span>
+                    </div>
+                    <hr>
+                    <div class="filter__fields">
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                    </div>
+                    <hr>
+                    <div class="filter__title">
+                        <h3 class="filter__title">OS</h3>
+                        <span class="icon-arrow_left"></span>
+                    </div>
+                    <hr>
+                    <div class="filter__fields">
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                    </div>
+                    <hr>
+                    <div class="filter__title">
+                        <h3 class="filter__title">Display</h3>
+                        <span class="icon-arrow_left"></span>
+                    </div>
+                    <hr>
+                    <div class="filter__fields">
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                        <input class="filter__item" type="checkbox" />
+                    </div>
+                </div>
+            </div>
+            <div class="main__cards">
+                <div class="card-wrapper box-wrapper ">
+                    <div class="card box">
+                        <div class="card__top">
+                            <span class="icon-like_empty hard-empty"></span>
+                            <div class="card__img-wrapper">
+                                <img class="card__img" src="img/items/iphone-12-pro.jpeg" alt="iphone-12-pro">
+                            </div>
+                            <h2 class="card__title">Iphone 12 pro</h2>
+                            <div class="card__is-instock"><span class="circle icon-check "></span>
+                                <span>1 in stock</span>
+                            </div>
+                            <span class="card__price">Price: 1100 $</span>
+                            <button class="active button">Add to cart</button>
+                        </div>
+                        <div class="card__bottom">
+                            <span class="hard-filled icon-like_filled"></span>
+                            <p>95% Positive reviews <br> Above avarage</p>
+                            <span class="reviews">1,323 <br>orders</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper box-wrapper ">
+                    <div class="card box">
+                        <div class="card__top">
+                            <span class="icon-like_empty hard-empty"></span>
+                            <div class="card__img-wrapper">
+                                <img class="card__img" src="img/items/iphone-12-pro.jpeg" alt="iphone-12-pro">
+                            </div>
+                            <h2 class="card__title">Iphone 12 pro</h2>
+                            <div class="card__is-instock">
+                                <span class="circle icon-check "></span>
+                                <span>1 in stock</span>
+                            </div>
+                            <span class="card__price">Price: 1100 $</span>
+                            <button class="active button">Add to cart</button>
+                        </div>
+                        <div class="card__bottom">
+                            <span class="hard-filled icon-like_filled"></span>
+                            <p>95% Positive reviews <br> Above avarage</p>
+                            <span class="reviews">1,323 <br>orders</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-wrapper box-wrapper ">
+                    <div class="card box">
+                        <div class="card__top">
+                            <span class="icon-like_empty hard-empty"></span>
+                            <div class="card__img-wrapper">
+                                <img class="card__img" src="img/items/iphone-12-pro.jpeg" alt="iphone-12-pro">
+                            </div>
+                            <h2 class="card__title">Iphone 12 pro</h2>
+                            <div class="card__is-instock">
+                                <span class="icon-close"></span>
+                                <span>0 in stock</span>
+                            </div>
+                            <span class="card__price">Price: 1100 $</span>
+                            <button class="inactive button">Add to cart</button>
+                        </div>
+                        <div class="card__bottom">
+                            <span class="hard-filled icon-like_filled"></span>
+                            <p>95% Positive reviews <br> Above avarage</p>
+                            <span class="reviews">1,323 <br>orders</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer"></footer>
+    </div>
+    <script src="js/items.js"></script>
+    <script src="js/javascript.js"></script>
 </body>
 
 </html>

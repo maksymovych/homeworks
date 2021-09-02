@@ -1,0 +1,29 @@
+#body{
+	max-width: 1200px;
+	margin: 0 auto;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+}
+.wrapper{
+	width: 100%;
+	padding: 5px;
+	overflow: hidden;
+}
+.boxes{
+	margin: 0 -20px;
+}
+.box-wrapper{
+	padding: 20px;
+}
+.box{
+
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px rgba(63, 62, 62, 0.8);
+	transition: 0.7s;
+	
+	&:hover{
+		border-radius: 10px;
+		box-shadow: 2px 2px 5px rgba(200, 199, 199, 0.8);
+	}
+}
