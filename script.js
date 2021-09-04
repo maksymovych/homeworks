@@ -1,23 +1,50 @@
 //Task 1
-const numberOfFields = prompt('Pleas enter number of fields:')
-
+const numberOfFields = 3 //prompt('Pleas enter number of fields:')
 const buttonRegistr = document.querySelector('.button')
 
-Array(numberOfFields).fill(1).forEach((item, index)=>{
-debugger
+for(let i = 0; i < numberOfFields; i++){
 	const input = document.createElement('input')
-	input.value = `Input ${index + 1}`
-	input.className = index < numberOfFields - 1 ? 'input-item' : 'input-item margin-zero'
+	input.value = `Input ${i + 1}`
+	input.className = i < numberOfFields - 1 ? 'input-item' : 'input-item margin-zero'
 
-	!(index % 2) ? input.classList.add('yellow') : ''
+	!(i % 2) ? input.classList.add('yellow') : ''
 
-	if (!((index + 1) % 3)){
+	if (!((i + 1) % 3)){
 		input.value = null
 		input.placeholder = 'Some text'
 	} 
 	
 	buttonRegistr.before(input)
-})
+}
 
 //Task 2
-//const button = document.createElement('button')
+const divTimeWrapper = document.createElement('div')
+const buttonStart = document.createElement('button')
+const buttonStop = document.createElement('button')
+const h2Timer = document.createElement('h2')
+const form = document.forms[0]
+
+buttonStart.innerText = 'Start'
+buttonStop.innerText = 'Stop'
+
+form.after(divTimeWrapper)
+divTimeWrapper.prepend(buttonStart, buttonStop)
+divTimeWrapper.append(h2Timer)
+
+function getTime(){
+	function paddStartZerro(number){
+		return number = number < 10 ? number.toString().padStart(2, 0) : number
+	}
+	const hours = paddStartZerro(new Date().getHours())
+	const minutes = paddStartZerro(new Date().getMinutes())
+	const seconds = paddStartZerro(new Date().getSeconds())
+	h2Timer.innerText = `${hours} : ${minutes} : ${seconds}`
+	return
+}
+function clock(){
+	
+		 setInterval(getTime(), 1000)
+	
+	
+}
+
