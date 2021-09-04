@@ -28,7 +28,7 @@ let timerId = 0
 buttonStart.innerText = 'Start'
 buttonStop.innerText = 'Stop'
 buttonStart.value = 'startTimer'
-buttonStop.value = 'stopTimer'
+
 form.after(divTimeWrapper)
 divTimeWrapper.prepend(buttonStart, buttonStop)
 divTimeWrapper.append(h2Timer)
@@ -51,60 +51,5 @@ function timer(event){
 		return
 	}
 
-	const value = event.target.value
-	
-	if (value === 'startTimer'){
-		timerId = setInterval(getTime, 1000)
-
-	}
-	
-	if (value === 'stopTimer'){
-		clearInterval(timerId)
-		console.log(timerId)
-	  
-   }
+	event.target.value === 'startTimer' ? timerId = setInterval(getTime, 1000) : clearInterval(timerId)
 }
-
-
-/*
-//Task 4
-const timer = time => {
-	const isAvailableTime = () => {
-		if (time >= 1 && time < 6000) {
-			return false
-		}
-		console.log("Time is anavailable. Must be number more then '0' and les then '6000' seconds")
-		return true
-	}
-
-	if (isAvailableTime()) return
-
-	time = Math.floor(time)
-
-	const SECONDS_IN_MINUT = 60
-	let counter = time
-	const timeLog = () => {
-		if (counter < 1) {
-			console.log("Time End")
-			clearInterval(timer)
-			return
-		}
-		const getMinutes = () => {
-			let min = Math.floor(counter / SECONDS_IN_MINUT)
-			if (min === 0) return "00"
-			if (min < 10) return "0" + min
-			return min
-		}
-		const getSeconds = () => {
-			let sec = counter % SECONDS_IN_MINUT
-			if (sec < 10) return "0" + sec
-			return sec
-		}
-		console.log(getMinutes() + ":" + getSeconds())
-		counter--
-	}
-
-	const timer = setInterval(timeLog, 1000)
-	return
-}
-*/
