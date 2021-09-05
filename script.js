@@ -1,5 +1,5 @@
 //Task 1
-const numberOfFields = 3 //prompt('Pleas enter number of fields:')
+const numberOfFields = 1//prompt('Pleas enter number of fields:')
 const buttonRegistr = document.querySelector('.button')
 
 for(let i = 0; i < numberOfFields; i++){
@@ -76,7 +76,6 @@ changeBlocks()
 //Task 4
 const list = document.querySelector('#menu')
 list.addEventListener('click', numerableList)
-let checker = true
 
 function numerableList(event){
 	const INGREDIENTS = {
@@ -86,12 +85,13 @@ function numerableList(event){
 		"matcha frappe": ["matcha", "milk", "ice"]
 	}
 	
-	let ol = document.createElement('ol')
-
+	const target = event.target
+	const innerText = event.target.innerText
+	
 	function showRecipe(){
-		const target = event.target
-		const innerText = event.target.innerText
+		let ol = document.createElement('ol')
 		target.after(ol)
+
 		INGREDIENTS[innerText].forEach(item=> {
 			const li = document.createElement('li')
 			li.innerText = item
@@ -100,17 +100,16 @@ function numerableList(event){
 	}
 
 	function closeRecipe(){
-		document.querySelectorAll('ol > li').forEach(item=>item.remove())
-		ol.remove()
+		target.nextElementSibling.remove()
 	}
 
-	if (checker){
-		showRecipe()
-	} else {
-		closeRecipe()
+	if (target.parentNode.tagName === 'UL'){
+		if (target.nextElementSibling?.tagName === 'OL'){
+			closeRecipe()
+		} else {
+			showRecipe()
+		}
 	}
-	
-	checker = !checker
 
 	return
 }
