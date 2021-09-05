@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src: url("../../fonts/");
-  src: url("../../fonts/#iefix") format("embedded-opentype"), url("../../fonts/icomoon.ttf?480s05") format("truetype"), url("../../fonts/icomoon.woff?480s05") format("woff"), url("../../fonts/icomoon.svg?480s05#icomoon") format("svg");
+  src: url("../fonts/icomoon.eot?79gtuh");
+  src: url("../fonts/icomoon.eot?79gtuh#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?79gtuh") format("truetype"), url("../fonts/icomoon.woff?79gtuh") format("woff"), url("../fonts/icomoon.svg?79gtuh#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -62,22 +62,6 @@
 
 .icon-settings:before {
   content: "\e908";
-}
-
-.icon-coin-dollar:before {
-  content: "\e93b";
-}
-
-.icon-cross:before {
-  content: "\ea0f";
-}
-
-.icon-checkmark:before {
-  content: "\ea10";
-}
-
-.icon-checkmark2:before {
-  content: "\ea11";
 }
 
 *,
