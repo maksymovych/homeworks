@@ -1,5 +1,5 @@
 //Task 1
-const numberOfFields = 1//prompt('Pleas enter number of fields:')
+const numberOfFields = prompt('Pleas enter number of fields:')
 const buttonRegistr = document.querySelector('.button')
 
 for(let i = 0; i < numberOfFields; i++){
