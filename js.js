@@ -35,7 +35,7 @@ const getCandidateById = id => {
 
 //Task3
 const sortCandidatesArr = (sortBy = '') => {
-	if (sortBy === '' || sortBy === null || sortBy === false) {
+	if (!sortBy) {
 		return condidateArr
 	}
 
@@ -72,3 +72,12 @@ const getEyeColorMap = () => {
 		return accum
 	}, {})
 }
+
+
+// 
+const result2 = condidateArr.reduce((acc, {age, fullName, email}) =>{
+	if (age >= 25 && age <=30){
+		return acc = [...acc, {fullName, email}]
+	}
+	return acc
+}, [])
