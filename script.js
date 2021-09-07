@@ -1,5 +1,5 @@
 //Task 1
-let firstPromise = new Promise((resolve, reject)=>{
+/*let firstPromise = new Promise((resolve, reject)=>{
 	setTimeout(()=>{
 		const number = Math.ceil(Math.random() * 6)
 		if (number === 6) {
@@ -15,7 +15,7 @@ let firstPromise = new Promise((resolve, reject)=>{
 }).catch(error => {
 	console.log(error)
 })
-
+*/
 
 //Task 2
 function goToShop(){
@@ -27,9 +27,8 @@ function goToShop(){
 function makeDinner(){
 	return new Promise(resolve=>{
 		setTimeout(()=>{
-			console.log('Bon appetite')
+			resolve('Bon appetite')
 		}, 3000)
-		resolve()
 	})
 }
 
@@ -40,9 +39,10 @@ goToShop()
 			this.name = err.name, this.message = err.message}
 		throw new productError({name: 'Product Error', message: 'Too low products'})
 	} else {
-		makeDinner()
+		return makeDinner()
 	}
 })
+.then(message => console.log(message))
 .catch(error => console.error(error.name,' : ', error.message))
 
 //Task 3
@@ -50,11 +50,10 @@ let container = document.body.querySelector('.container')
 
 document.forms[0].addEventListener('click', filter())
 
-async function getApi(path){
+function getApi(path){
 	let api = 'https://rickandmortyapi.com/api/character/'
-	const response = await fetch(`${api}${path}`)
-
-	return await response.json()
+	return fetch(`${api}${path}`)
+	.then(response => response.json())
 }
 
 function getCharactersById(...path){
