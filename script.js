@@ -1,5 +1,5 @@
 //Task 1
-/*let firstPromise = new Promise((resolve, reject)=>{
+let firstPromise = new Promise((resolve, reject)=>{
 	setTimeout(()=>{
 		const number = Math.ceil(Math.random() * 6)
 		if (number === 6) {
@@ -16,22 +16,35 @@
 	console.log(error)
 })
 
+
 //Task 2
-function makeDinner(){
-	return new Promise((resolve, reject) => {
-		setTimeout(console.log('Bon appetite'), 3000)
-		resolve()
-	})
-}
 function goToShop(){
-	
-	return new Promise(resolve=>{
-		resolve()
-	}).then(response=>{
-		console.log(response)
+	const products = ['salad', 'olive', 'cheez', 'meaet', 'onion']
+	return new Promise(resolve => {
+		resolve(products.length)
 	})
 }
-*/
+function makeDinner(){
+	return new Promise(resolve=>{
+		setTimeout(()=>{
+			console.log('Bon appetite')
+		}, 3000)
+		resolve()
+	})
+}
+
+goToShop()
+.then(response=>{
+	if (response < 4) {
+		function productError (err){ 
+			this.name = err.name, this.message = err.message}
+		throw new productError({name: 'Product Error', message: 'Too low products'})
+	} else {
+		makeDinner()
+	}
+})
+.catch(error => console.error(error.name,' : ', error.message))
+
 //Task 3
 let container = document.body.querySelector('.container')
 
@@ -53,13 +66,13 @@ function getCharactersById(...path){
 			addCardToDOM(data)
 		}
 	})
-	.catch(error => {
-		throw new Error('Some error: ' + error)
-	})
+	.catch(error => console.error(error))
 }
 
 function filter(){
+
 	let filterPath = '?&'
+
 	return (target) =>{
 		const value = target.target.id
 		if (!value) return
@@ -67,21 +80,17 @@ function filter(){
 		let key = (value === 'male' || value === 'female') ? 'gender' : ''
 		key = (value === 'alive' || value === 'dead') ?  'status' : key
 		
-		
 		if (target.target.checked){
 			filterPath += `&${key}=${value}`
 		} else {
 			filterPath = filterPath.replace(`&${key}=${value}`, '')
 		}
 
-		getApi(filterPath)
-		.then(array=>{
-			console.log(array.results)
-			container.innerHTML =''
+		getApi(filterPath).then(array=>{
+			container.innerHTML = ''
 			array.results.map(character => addCardToDOM(character))
 		})
 	}
-	
 }
 
 function addCardToDOM(item){
