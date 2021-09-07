@@ -20,9 +20,7 @@
 //Task 2
 function goToShop(){
 	const products = ['salad', 'olive', 'cheez', 'meaet', 'onion']
-	return new Promise(resolve => {
-		resolve(products.length)
-	})
+	return Promise.resolve(products.length - 4)
 }
 function makeDinner(){
 	return new Promise(resolve=>{
@@ -35,15 +33,17 @@ function makeDinner(){
 goToShop()
 .then(response=>{
 	if (response < 4) {
-		function productError (err){ 
-			this.name = err.name, this.message = err.message}
+		function ProductError (err){ 
+			this.name = err.name, this.message = err.message
+		}
+		ProductError.prototype = Error.prototype
 		throw new productError({name: 'Product Error', message: 'Too low products'})
 	} else {
 		return makeDinner()
 	}
 })
 .then(message => console.log(message))
-.catch(error => console.error(error.name,' : ', error.message))
+.catch(error => console.error(error.name,' : ', error.message, error instanceof Error))
 
 //Task 3
 let container = document.body.querySelector('.container')
