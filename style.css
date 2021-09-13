@@ -1,7 +1,24 @@
-/*body {
-	font-family: 'Open Sans', sans-serif;
-}*/
-.wrapper {
+#body {
+  font-family: 'Open Sans', sans-serif;
+  padding: 20px;
+}
+
+@media (min-width: 700px) {
+  #body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+form {
+  padding: 20px;
+}
+
+.calendar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -107,5 +124,23 @@ hr {
   color: lightgray;
   opacity: 0.5;
   width: 248px;
+}
+
+ul li {
+  list-style: none;
+  padding: 5px;
+}
+
+.title {
+  text-align: center;
+}
+
+.submit {
+  text-align: center;
+}
+
+.min,
+.hour {
+  width: 50px;
 }
 /*# sourceMappingURL=style.css.map */

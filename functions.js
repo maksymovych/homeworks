@@ -2,15 +2,14 @@ const events = document.body.querySelector('.events')
 
 function addTimeAgenda(){
 	const agenda = document.body.querySelector('.agenda')
-	for(let i = 0; i < 9; i++){
-		const hour = i + 8
+	for(let i = 8; i < 17; i++){
 		const hr = document.createElement('hr')
 		const span1 = document.createElement('span')
 		const span2 = document.createElement('span')
 		span1.classList = ('time big')
 		span2.classList = ('time smole')
-		span1.textContent = (`${hour}:00`)
-		span2.textContent = `${hour}:30`
+		span1.textContent = `${i}:00`
+		span2.textContent = `${i}:30`
 		agenda.append(hr)
 		agenda.append(span1)
 		agenda.append(span2)
@@ -69,4 +68,13 @@ function addEvents(events){
 			return [accum, current]
 		}	
 	})
+}
+
+function addNewEvent(start, duration, title){
+
+	newAgenda = [...agenda, {start, duration, title}]
+	newAgenda.sort((a, b)=> a.start - b.start)
+	events.innerHTML = ''
+	console.log(...agenda, {start, duration, title})
+	return addEvents(newAgenda)
 }

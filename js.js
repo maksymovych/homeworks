@@ -9,10 +9,19 @@ const agenda = [
 ]
 //max 540
 
-
+let newAgenda = []
 
 addTimeAgenda()
 
 addEvents(agenda)
 
+
+document.forms.add.addEventListener("submit",
+function (e) {
+	e.preventDefault();
+	const data = Object.fromEntries(new FormData(e.target));
+	console.log(data)
+	const start = (data.hour - 8) * 60 + +data.min
+	addNewEvent(start, +data.duration, data.title)
+});
 

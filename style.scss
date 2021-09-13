@@ -1,8 +1,15 @@
-/*body {
+#body {
 	font-family: 'Open Sans', sans-serif;
-}*/
-
-.wrapper {
+	padding: 20px;
+	@media (min-width: 700px){
+		display: flex;
+		justify-content: center;	
+	}
+}
+form{
+	padding: 20px;
+}
+.calendar {
 	display: flex;
 	padding: 20px;
 	
@@ -92,4 +99,21 @@ hr {
 	color  : lightgray;
 	opacity: 0.5;
 	width: 248px;
+}
+
+ul li{
+	list-style: none;
+	padding: 5px;
+}
+
+.title{
+	text-align: center;
+}
+.submit{
+	text-align: center;
+}
+
+.min,
+.hour{
+	width: 50px;
 }
