@@ -13,37 +13,47 @@
 </head>
 
 <body id="body">
-	<div class="calendar">
-		<div class="agenda">
-			
+	<div class="main">
+		<div class="calendar">
+			<div class="agenda">
+				
+			</div>
+			<div class="events">
+				
+			</div>
 		</div>
-		<div class="events">
-			
-		</div>
+		<form action="submit" name='add'>
+			<h2 class="title">Add new event</h2>
+			<ul>
+				<li>
+					<label>Start time (hours : minutes)</label>
+					<br>
+					<input name="hour" class="hour" type="number" />
+					<span> : </span>
+					<input name="min" class="min" type="number" />
+				</li>
+				<li>
+					<label>Duration in minutes:</label>
+					<input name="duration" type="number" />
+				</li>
+				<li>
+					<label>Title for event:</label>
+					<input name="title" type="text" />
+				</li>
+				<li class="submit">
+					<input class="submit" type="submit" value="Submit" />
+				</li>
+			</ul>
+		</form>
 	</div>
-	<form action="submit" name='add'>
-		<h2 class="title">Add new event</h2>
-		<ul>
-			<li>
-				<label>Start time (hours : minutes)</label>
-				<br>
-				<input name="hour" class="hour" type="number" />
-				<span> : </span>
-				<input name="min" class="min" type="number" />
-			</li>
-			<li>
-				<label>Duration in minutes:</label>
-		<input name="duration" type="number" />
-			</li>
-			<li>
-				<label>Title for event:</label>
-				<input name="title" type="text" />
-			</li>
-			<li class="submit">
-				<input class="submit" type="submit" value="Submit" />
-			</li>
-		</ul>
-	</form>
+	<div>
+		<ol>
+			<li>To add an event use form 'Add new event'</li>
+			<li>To delete an event double click</li>
+			<li>To change color for an event one click</li>
+		</ol>
+	</div>
+
 	<script src="functions.js"></script>
 	<script src="js.js"></script>
 </body>

@@ -1,10 +1,10 @@
 #body {
-  font-family: 'Open Sans', sans-serif;
   padding: 20px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 @media (min-width: 700px) {
-  #body {
+  .main {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -75,7 +75,6 @@ form {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   content: '';
-  margin-left: 50%;
   opacity: 0.1;
   -webkit-transition-duration: .8s;
           transition-duration: .8s;

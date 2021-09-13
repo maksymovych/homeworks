@@ -1,4 +1,4 @@
-const agenda = [
+let agenda = [
 	{start: 0, duration: 35, title: 'Exersize at 8 oclock'},
 	{start: 25, duration: 20, title: 'Wea to work'},
 	{start: 60, duration: 30, title: 'Mitng with teem'},
@@ -9,7 +9,6 @@ const agenda = [
 ]
 //max 540
 
-let newAgenda = []
 
 addTimeAgenda()
 
@@ -25,3 +24,15 @@ function (e) {
 	addNewEvent(start, +data.duration, data.title)
 });
 
+function removeElement(e){
+	const check = confirm('Are you sure, you want to delete an event?')
+	if (!check) return
+	const id = e.target.id
+	agenda.splice(id, 1)
+	clearHtml()
+	addEvents(agenda)
+}
+
+
+events.addEventListener('dblclick', removeElement)
+events.addEventListener('click', changeColor)
