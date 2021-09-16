@@ -44,52 +44,95 @@ function putMultipleEvent(obj){
 			right: size * index})
 			events.append(event)
 		});
-	}
+}
 	
-	function addEvents(events){
-		id = 0
-		events.reduce((accum, current, index, arr)=>{
-			if (current.start + current.duration > 540){
-				throw new Error('All events should be finished by 17:00')
-			}
-			if (Array.isArray(accum)){
-				
-				if (index === events.length - 1){
-					putMultipleEvent(accum)
-				}
-				if(accum[accum.length -1].start + accum[accum.length -1].duration <= current.start){
-					putMultipleEvent(accum)
-					return current
-				} else return [...accum, current]
-				
-			} else if(index === arr.length - 1){
-				putOneTimeEvent(accum)
-				putOneTimeEvent(current)
-				return
-			} else if (accum.start + accum.duration <= current.start){
-				putOneTimeEvent(accum)
-				return current
-			} else if(accum.start + accum.duration > current.start){
-				return [accum, current]
-			}	
-		})
-	}
 
-	function clearHtml(){
-		events.innerHTML = ''
+function multipleCurrentEvents(accum, current, index, arr){
+	const accumDur = accum[accum.length -1].start + accum[accum.length -1].duration
+
+	if (index === arr.length - 1 && accumDur <= current.start){
+		putMultipleEvent(accum)
+		putOneTimeEvent(current)
+		return
 	}
+	if (index === arr.length - 1 && accumDur > current.start){
+		putMultipleEvent([...accum, current])
+		return
+	}
+	if (accumDur <= current.start){
+		putMultipleEvent(accum)
+		return current
+	} 
+	return [...accum, current]
+}
+
+function singleCurrentEvent(accum, current, index, arr){
+	const accumDur = accum.start + accum.duration
+
+	if (index === arr.length - 1 && accumDur <= current.start){
+		putOneTimeEvent(accum)
+		putOneTimeEvent(current)
+		return
+	}
+	if (index === arr.length - 1 && accumDur > current.start){
+		putMultipleEvent([accum, current])
+		return
+	}
+	if (accumDur <= current.start){
+		putOneTimeEvent(accum)
+		return current
+	}
+	return [accum, current]
+}
+
+function addEvents(events){
+	id = 0
+	const currentTime = ((new Date().getHours() - 8) * 60) + new Date().getMinutes()
+	events.reduce((accum, current, index, arr)=>{
+		const currentDur = current.start + current.duration
+		const accumDur = accum.start + accum.duration
+		if (currentDur > 540 || current.start < 0 || (index === 0 && (accum.start < 0 || accumDur > 540))){
+			throw new Error('All events should had been started at 8:00 and finished by 17:00')
+		}
+		return Array.isArray(accum) ? multipleCurrentEvents(accum, current, index, arr) 
+		: singleCurrentEvent(accum, current, index, arr)
+	})
+}
+
+function clearHtml(){
+	events.innerHTML = ''
+}
+
+function addNewEvent(start, duration, title){
 	
-	function addNewEvent(start, duration, title){
-		
-		agenda = [...agenda, {start, duration, title}]
-		agenda.sort((a, b)=> a.start - b.start)
-		clearHtml()
-		return addEvents(newAgenda)
-	}
+	agenda = [...agenda, {start, duration, title}]
+	agenda.sort((a, b)=> a.start - b.start)
+	clearHtml()
+	return addEvents(agenda)
+}
 	
 function changeColor(e){
 	const color = prompt('Type color f.e. (0, 242, 255)')
 	e.target.style.backgroundColor = `rgba(${color}, 0.5)`
 	e.target.style.borderLeft = `2px solid rgb(${color})`
 	console.log(e.target.style.borderLeft)
+}
+
+
+function showNotification(title){
+	
+	const modal = document.querySelector('.notification');
+	const text = document.querySelector('.notification__text')
+	const close = document.querySelector('.close')
+	modal.style.display = "block";
+	text.append(`Your event "${title}" have been started`)
+
+	document.body.addEventListener('click', closeModal)
+	function closeModal(e){
+		console.log(e.target)
+		if(e.target === close || e.target === modal){
+			modal.style.display = "none";
+		}
+	}
+	return
 }
