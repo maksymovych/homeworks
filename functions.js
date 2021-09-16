@@ -21,9 +21,14 @@ let id = null
 
 function makeEvent(obj){
 	const event = document.createElement('div')
-	event.className ='event'
+	const spanClose = document.createElement('span')
+	spanClose.innerText = 'x'
+	spanClose.classList.add('removeEvent')
+	spanClose.setAttribute('id', id)
 	event.setAttribute('id', id++)
+	event.classList.add('event')
 	event.textContent = obj.title
+	event.append(spanClose)
 	event.style.width = obj.width + 'px'
 	event.style.height= obj.duration + 'px'
 	event.style.top = obj.start + 'px'
@@ -91,7 +96,7 @@ function addEvents(events){
 	events.reduce((accum, current, index, arr)=>{
 		const currentDur = current.start + current.duration
 		const accumDur = accum.start + accum.duration
-		if (currentDur > 540 || current.start < 0 || (index === 0 && (accum.start < 0 || accumDur > 540))){
+		if (currentDur > 540 || current.start < 0 || index === 0 && (accum.start < 0 || accumDur > 540)){
 			throw new Error('All events should had been started at 8:00 and finished by 17:00')
 		}
 		return Array.isArray(accum) ? multipleCurrentEvents(accum, current, index, arr) 
@@ -123,13 +128,12 @@ function showNotification(title){
 	
 	const modal = document.querySelector('.notification');
 	const text = document.querySelector('.notification__text')
-	const close = document.querySelector('.close')
+	const close = document.querySelector('.closeNotitfication')
 	modal.style.display = "block";
 	text.append(`Your event "${title}" have been started`)
 
 	document.body.addEventListener('click', closeModal)
 	function closeModal(e){
-		console.log(e.target)
 		if(e.target === close || e.target === modal){
 			modal.style.display = "none";
 		}

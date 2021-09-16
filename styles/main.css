@@ -64,50 +64,24 @@ form {
           transition-duration: .8s;
 }
 
-.event::before {
-  position: absolute;
-  width: 2px;
-  height: 15px;
-  border-radius: 20px;
-  background-color: red;
-  right: 10px;
-  top: 0;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  content: '';
-  opacity: 0.1;
-  -webkit-transition-duration: .8s;
-          transition-duration: .8s;
-  -webkit-box-shadow: 1px 1px 1px #eb8c8c;
-          box-shadow: 1px 1px 1px #eb8c8c;
-}
-
-.event::after {
-  position: absolute;
-  width: 2px;
-  height: 15px;
-  border-radius: 20px;
-  background-color: red;
-  right: 10px;
-  top: 0;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  content: '';
-  opacity: 0.1;
-  -webkit-transition-duration: .8s;
-          transition-duration: .8s;
-  -webkit-box-shadow: 1px 1px 1px #f36b6b;
-          box-shadow: 1px 1px 1px #f36b6b;
-}
-
-.event:hover::before, .event:hover::after {
-  opacity: 1;
-}
-
 .event:hover {
   width: 100% !important;
-  right: 0 !important;
   z-index: 10;
+}
+
+.removeEvent {
+  position: absolute;
+  content: '';
+  color: #aaa;
+  right: 3px;
+  bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.removeEvent:hover {
+  color: black;
+  cursor: pointer;
 }
 
 .big {
@@ -155,6 +129,7 @@ ul li {
 }
 
 .notification__content {
+  position: relative;
   background-color: #fefefe;
   margin: 30px 45%;
   padding: 20px;
@@ -163,8 +138,11 @@ ul li {
 }
 
 .close {
+  position: absolute;
+  content: '';
   color: #aaa;
-  float: right;
+  right: 5px;
+  top: 0;
   font-size: 28px;
   font-weight: bold;
 }

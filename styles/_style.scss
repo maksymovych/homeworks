@@ -4,7 +4,6 @@
 }
 
 .main {
-	
 	@media (min-width: 700px){
 		display: flex;
 		justify-content: center;	
@@ -46,48 +45,23 @@ form{
 	transition-duration: .8s;	
 }
 
-.event::before{
-	position: absolute;
-	width: 2px;
-	height: 15px;
-	border-radius: 20px;
-	background-color: red;
-	right: 10px;
-	top: 0;
-	transform: rotate(45deg);
-	content: '';
-
-	opacity: 0.1;
-	transition-duration: .8s;
-	box-shadow: 1px 1px 1px rgb(235, 140, 140);
-}
-.event::after{
-	position: absolute;
-	width: 2px;
-	height: 15px;
-	border-radius: 20px;
-	background-color: red;
-	right: 10px;
-	top:0;
-	transform: rotate(-45deg);
-	content: '';
-	opacity: 0.1;
-	transition-duration: .8s;
-	box-shadow: 1px 1px 1px rgb(243, 107, 107);
-
-}
-
-.event:hover{
-	&::before,
-	&::after{
-		opacity: 1;
-	}
-}
-
 .event:hover {
 	width: 100% !important;
-	right: 0 !important;
 	z-index: 10;
+}
+
+.removeEvent {
+	position: absolute;
+	content: '';
+	color: #aaa;
+	right: 3px;
+    bottom: 0;
+    font-size: 20px;
+	font-weight: bold;
+	&:hover{
+		color: black;
+		cursor: pointer;
+	}
 }
 
 .big {
