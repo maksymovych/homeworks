@@ -5,7 +5,7 @@ const endTime = 17;
 const min = 60;
 const lastMin = (endTime - startTime) * 60;
 let id = null;
-let timeout = null
+let timeout = null;
 
 function addTimeAgenda(){
 	const agenda = document.body.querySelector('.agenda');
@@ -63,20 +63,20 @@ function hostinMultipleevents(arr){
 	const prevEventFinish = prev.start + prev.duration;
 
 	if (prevEventFinish <= last.start){
-		putMultipleEvent(arr.filter((i, index)=> index < arr.length - 1))
-		const right = eventWidth / (arr.length - 1) ;
+		putMultipleEvent(arr.filter((i, index)=> index < arr.length - 1));
+		const right = eventWidth / (arr.length - 1);
 		const width = eventWidth - right;
-		putOneTimeEvent(last, width, right)
+		putOneTimeEvent(last, width, right);
 		return
 	}
 	if(arr.length === 3){
-		putMultipleEvent(arr.filter((i, index)=> index < arr.length - 1))
+		putMultipleEvent(arr.filter((i, index)=> index < arr.length - 1));
 		const width = (eventWidth / 2) - 2;
-		putOneTimeEvent(last, width)
-		return
+		putOneTimeEvent(last, width);
+		return;
 	}
-	putMultipleEvent(arr)
-	return
+	putMultipleEvent(arr);
+	return;
 }
 
 function multipleCurrentEvents(accum, current, index, arr){
@@ -92,37 +92,37 @@ function multipleCurrentEvents(accum, current, index, arr){
 		return;
 	}
 	if (accumDur <= current.start && !isSomeEentCross){
-		hostinMultipleevents(accum)	
-		return current	
+		hostinMultipleevents(accum)	;
+		return current	;
 	} 
 	return [...accum, current];
 }
 
 function singleCurrentEvent(accum, current, index, arr){
-	const accumDur = accum.start + accum.duration
+	const accumDur = accum.start + accum.duration;
 
 	if (index === arr.length - 1 && accumDur <= current.start){
-		putOneTimeEvent(accum)
-		putOneTimeEvent(current)
+		putOneTimeEvent(accum);
+		putOneTimeEvent(current);
 		return
 	}
 	if (index === arr.length - 1 && accumDur > current.start){
-		putMultipleEvent([accum, current])
+		putMultipleEvent([accum, current]);
 		return
 	}
 	if (accumDur <= current.start){
-		putOneTimeEvent(accum)
-		return current
+		putOneTimeEvent(accum);
+		return current;
 	}
-	return [accum, current]
+	return [accum, current];
 }
 
 function renderEvents(events){
-	id = 0
+	id = 0;
 	events.reduce((accum, current, index, arr)=>{
-		const currentDur = current.start + current.duration
+		const currentDur = current.start + current.duration;
 		if (currentDur > lastMin || current.start < 0){
-			throw new Error('All events should had been started at 8:00 and finished by 17:00')
+			throw new Error('All events should had been started at 8:00 and finished by 17:00');
 		}
 		return Array.isArray(accum) ? multipleCurrentEvents(accum, current, index, arr) 
 		: singleCurrentEvent(accum, current, index, arr);
@@ -130,33 +130,32 @@ function renderEvents(events){
 }
 
 function addNotifications(agenda){
-	timeout = clearTimeout()
+	timeout = clearTimeout();
 	const currentTime = ((new Date().getHours() - startTime) * min) + new Date().getMinutes();
 	agenda.forEach((item) =>{
 		const start = item.start;
-		const finish = start + item.duration
+		const finish = start + item.duration;
 		if (currentTime >= start && currentTime < finish){
-			showNotification(item.title)
-			return
+			showNotification(item.title);
+			return;
 		} else if (start > currentTime){
-			const timeBeforEvent = (start - currentTime) * min * 1000
-			timeout = setTimeout(()=>showNotification(item.title), timeBeforEvent)
-			console.log((start - currentTime)* 60, timeBeforEvent)
-			return
+			const timeBeforEvent = (start - currentTime) * min * 1000;
+			timeout = setTimeout(()=>showNotification(item.title), timeBeforEvent);
+			return;
 		}
 	});
 }
 
 function clearHtml(){
-	events.innerHTML = ''
+	events.innerHTML = '';
 }
 
 function addNewEvent(start, duration, title){
 	
-	agenda = [...agenda, {start, duration, title}]
-	agenda.sort((a, b)=> a.start - b.start)
-	clearHtml()
-	return renderEvents(agenda)
+	agenda = [...agenda, {start, duration, title}];
+	agenda.sort((a, b)=> a.start - b.start);
+	clearHtml();
+	return renderEvents(agenda);
 }
 	
 function changeColor(e){
@@ -169,15 +168,15 @@ function changeColor(e){
 function showNotification(title){
 	
 	const modal = document.querySelector('.notification');
-	const text = document.querySelector('.notification__text')
-	const close = document.querySelector('.closeNotification')
+	const text = document.querySelector('.notification__text');
+	const close = document.querySelector('.closeNotification');
 	modal.style.display = "block";
-	text.append(`Your event: "${title}" have been started`)
-	document.body.addEventListener('click', closeModal)
+	text.textContent = `Your event: "${title}" have been started`;
+	document.body.addEventListener('click', closeModal);
 	function closeModal(e){
 		if(e.target === close || e.target === modal){
 			modal.style.display = "none";
 		}
 	}
-	return
+	return;
 }

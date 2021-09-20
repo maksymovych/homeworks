@@ -26,6 +26,7 @@ form{
 
 .time {
 	height     : 29px;
+	
 }
 .events{
 	position        : relative;
@@ -43,11 +44,26 @@ form{
 	content: '';
 	position: absolute;
 	transition-duration: .8s;	
+
+	&::after{
+		position: absolute;
+		font-family: 'icomoon';
+		content: "\e90c";
+		bottom: 5px;
+		right: 18px;
+		transition-duration: 0.5s;
+		opacity: 0.1;
+		color:darkorange;
+	}
 }
 
 .event:hover {
 	width: 100% !important;
 	z-index: 10;
+
+	&::after{
+		opacity: 1;
+	}
 }
 
 .removeEvent {
