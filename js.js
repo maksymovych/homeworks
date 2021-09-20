@@ -15,30 +15,38 @@ let agenda = [
 
 addTimeAgenda();
 
+renderEvents(agenda);
 
-addEvents(agenda);
+addNotifications(agenda)
+
+clickAndListen()
 
 
-document.forms.add.addEventListener('submit',
-function (e) {
-	e.preventDefault();
-	const data = Object.fromEntries(new FormData(e.target));
-	const start = (data.hour - 8) * 60 + +data.min
-	addNewEvent(start, +data.duration, data.title)
-	alert('New event was added')
-});
 
-function removeEvent(id){
-	const check = confirm('Are you sure, you want to delete an event?')
-	if (!check) return
-	agenda.splice(id, 1)
-	clearHtml()
-	addEvents(agenda)
+function clickAndListen(){
+	
+	document.forms.add.addEventListener('submit',
+	function (e) {
+		e.preventDefault();
+		const data = Object.fromEntries(new FormData(e.target));
+		const start = (data.hour - 8) * 60 + +data.min;
+		addNewEvent(start, +data.duration, data.title);
+		alert('New event was added');
+		addNotifications(agenda)
+	});
+
+	function removeEvent(id){
+		const check = confirm('Are you sure, you want to delete an event?')
+		if (!check) return
+		agenda.splice(id, 1)
+		clearHtml()
+		renderEvents(agenda)
+	}
+
+	function removeElementOrChangeColor(e){
+		e.target.classList[0] === 'removeEvent' ? removeEvent(e.target.id) : changeColor(e)
+	}
+
+	events.addEventListener('click', removeElementOrChangeColor)
+	return
 }
-function removeElementOrChangeColor(e){
-	console.log(e.target.id)
-	e.target.classList[0] === 'removeEvent' ? removeEvent(e.target.id) : changeColor(e)
-}
-
-
-events.addEventListener('click', removeElementOrChangeColor)

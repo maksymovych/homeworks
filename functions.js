@@ -1,11 +1,15 @@
 const events = document.body.querySelector('.events');
-const eventWidth = 198
+const eventWidth = 198;
+const startTime = 8;
+const endTime = 17;
+const min = 60;
+const lastMin = (endTime - startTime) * 60;
 let id = null;
-
+let timeout = null
 
 function addTimeAgenda(){
 	const agenda = document.body.querySelector('.agenda');
-	for(let i = 8; i < 17; i++){
+	for(let i = startTime; i < endTime; i++){
 		const hr = document.createElement('hr');
 		const span1 = document.createElement('span');
 		const span2 = document.createElement('span');
@@ -48,15 +52,15 @@ function putMultipleEvent(obj){
 		const size = eventWidth / obj.length;
 		const event = makeEvent({...element, 
 			width: size - 2,
-			right: size * index})
-			events.append(event);
+			right: size * index});
+		events.append(event);
 		});
 }
 
 function hostinMultipleevents(arr){
 	const last = arr[arr.length - 1];
-	const prev = arr[arr.length - 2]
-	const prevEventFinish = prev.start + prev.duration
+	const prev = arr[arr.length - 2];
+	const prevEventFinish = prev.start + prev.duration;
 
 	if (prevEventFinish <= last.start){
 		putMultipleEvent(arr.filter((i, index)=> index < arr.length - 1))
@@ -113,17 +117,34 @@ function singleCurrentEvent(accum, current, index, arr){
 	return [accum, current]
 }
 
-function addEvents(events){
+function renderEvents(events){
 	id = 0
-	const currentTime = ((new Date().getHours() - 8) * 60) + new Date().getMinutes()
 	events.reduce((accum, current, index, arr)=>{
 		const currentDur = current.start + current.duration
-		if (currentDur > 540 || current.start < 0){
+		if (currentDur > lastMin || current.start < 0){
 			throw new Error('All events should had been started at 8:00 and finished by 17:00')
 		}
 		return Array.isArray(accum) ? multipleCurrentEvents(accum, current, index, arr) 
-		: singleCurrentEvent(accum, current, index, arr)
+		: singleCurrentEvent(accum, current, index, arr);
 	})
+}
+
+function addNotifications(agenda){
+	timeout = clearTimeout()
+	const currentTime = ((new Date().getHours() - startTime) * min) + new Date().getMinutes();
+	agenda.forEach((item) =>{
+		const start = item.start;
+		const finish = start + item.duration
+		if (currentTime >= start && currentTime < finish){
+			showNotification(item.title)
+			return
+		} else if (start > currentTime){
+			const timeBeforEvent = (start - currentTime) * min * 1000
+			timeout = setTimeout(()=>showNotification(item.title), timeBeforEvent)
+			console.log((start - currentTime)* 60, timeBeforEvent)
+			return
+		}
+	});
 }
 
 function clearHtml(){
@@ -135,7 +156,7 @@ function addNewEvent(start, duration, title){
 	agenda = [...agenda, {start, duration, title}]
 	agenda.sort((a, b)=> a.start - b.start)
 	clearHtml()
-	return addEvents(agenda)
+	return renderEvents(agenda)
 }
 	
 function changeColor(e){
@@ -149,10 +170,9 @@ function showNotification(title){
 	
 	const modal = document.querySelector('.notification');
 	const text = document.querySelector('.notification__text')
-	const close = document.querySelector('.closeNotitfication')
+	const close = document.querySelector('.closeNotification')
 	modal.style.display = "block";
-	text.append(`Your event "${title}" have been started`)
-
+	text.append(`Your event: "${title}" have been started`)
 	document.body.addEventListener('click', closeModal)
 	function closeModal(e){
 		if(e.target === close || e.target === modal){
